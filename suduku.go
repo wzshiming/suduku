@@ -293,7 +293,7 @@ func formatRange(s []uint8) string {
 	return strings.Join(ss, ",")
 }
 
-const uintList = "0123456789"
+const uintList = ".123456789"
 
 func formatUint(u uint8) string {
 	return uintList[u : u+1]

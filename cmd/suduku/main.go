@@ -2,7 +2,6 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
@@ -55,13 +54,15 @@ func main() {
 	s.Import(data)
 	i := 0
 	s.Solve(func(s *suduku.Suduku) bool {
-		fmt.Println(s.String())
 		if out != ioutil.Discard {
 			data := suduku.Encode(s.Export())
 			out.Write(data)
-			out.Write([]byte{'\n'})
 		}
 		i++
-		return i != size
+		needNext := i != size
+		if needNext {
+			out.Write([]byte{'\n'})
+		}
+		return needNext
 	})
 }
