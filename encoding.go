@@ -4,6 +4,8 @@ import (
 	"bytes"
 )
 
+const uintList = ".123456789"
+
 func Encode(grid Grid) []byte {
 	buf := make([]byte, 0, 2*(size+2)*(size+2))
 	for i := uint8(0); i != size*size; i++ {

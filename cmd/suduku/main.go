@@ -50,12 +50,11 @@ func main() {
 		defer f.Close()
 	}
 
-	s := suduku.NewSuduku()
-	s.Import(data)
+	s := suduku.NewSuduku(data)
 	i := 0
 	s.Solve(func(s *suduku.Suduku) bool {
 		if out != ioutil.Discard {
-			data := suduku.Encode(s.Export())
+			data := suduku.Encode(s.Board())
 			out.Write(data)
 		}
 		i++
